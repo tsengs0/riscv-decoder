@@ -24,7 +24,9 @@ Instructions are first parsed to their opcode, which is not the best option:
 `lhu`, `sb` and `sh` share the same opcode while having two different types: this case isn't processed yet. In other words, the decoder works only when the opcode is specific to a type.
 
 - However comparing both `opcode` and `funct3` should work.
-- Ideas in this hardware implementation: https://github.com/BrunoLevy/learn-fpga/blob/master/FemtoRV/RTL/PROCESSOR/femtorv32_electron.v
+- Ideas in these hardware implementations:
+  - https://github.com/BrunoLevy/learn-fpga/blob/master/FemtoRV/RTL/PROCESSOR/femtorv32_electron.v
+  - https://github.com/cliffordwolf/picorv32/blob/master/picorv32.v#L644
 
 ## Documentation
 
