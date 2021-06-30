@@ -6,13 +6,7 @@
 
 ## Opcodes
 
-| inst[4-2] | 000    | 001      | 010      | 011      | 100    | 101      | 110            | 111  |
-| :-------- | :----- | :------- | :------- | :------- | :----- | :------- | :------------- | :--- |
-| inst[6-5] |        |          |          |          |        |          |                |      |
-| 00        | `LOAD` | LOAD-FP  | custom-0 | MISC-MEM | OP-IMM | AUIPC    | OP-IMM-32      |      |
-| 01        | STORE  | STORE-FP | custom-1 | AMO      | OP-IMM | LUI      | OP-32          |      |
-| 10        | MADD   | MSUB     | NMSUB    | NMADD    | OP-FP  | reserved | custom-2/rv128 |      |
-| 11        | BRANCH | JALR     | reserved | JAL      | SYSTEM | reserved | custom-3/rv128 |      |
+![opcode](./doc/opcodes.jpg)
 
 ## ISA
 
