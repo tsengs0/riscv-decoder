@@ -49,3 +49,26 @@ def s_decoding(inst):
     imm40  = inst & rc.S_IMM40_MASK
     opcode = inst & rc.OPCODE_MASK
     return imm11, rs2, rs1, funct3, imm40, opcode
+
+
+def instruction_parsing(inst_type,tested_instruction):
+    print("Instruction: " + str(hex(tested_instruction)))
+    print("Type: " + inst_type)
+    if inst_type == 'U':
+        [imm, rd, opcode] = u_decoding(tested_instruction)
+        print('[imm, rd, opcode]')
+        print('[{}]'.format(', '.join(hex(x) for x in [imm, rd, opcode])))
+    elif inst_type == 'I':
+        [imm, rs1, funct3, rd, opcode] = i_decoding(tested_instruction)
+        print('[imm, rs1, funct3, rd, opcode]')
+        print('[{}]'.format(', '.join(hex(x) for x in [imm, rs1, funct3, rd, opcode])))
+    elif inst_type == 'R':
+        [funct7, rs2, rs1, funct3, rd, opcode] = r_decoding(tested_instruction)
+        print('[funct7, rs2, rs1, funct3, rd, opcode]')
+        print('[{}]'.format(', '.join(hex(x) for x in [funct7, rs2, rs1, funct3, rd, opcode])))
+    elif inst_type == 'S':
+        [imm11, rs2, rs1, funct3, imm40, opcode] = s_decoding(tested_instruction)
+        print('[imm11, rs2, rs1, funct3, imm40, opcode]')
+        print('[{}]'.format(', '.join(hex(x) for x in [imm11, rs2, rs1, funct3, imm40, opcode])))
+    else:
+        print("Not verified yet")
