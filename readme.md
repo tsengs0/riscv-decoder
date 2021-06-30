@@ -10,4 +10,6 @@ This idea of this tool is just to decode/parse a given instruction. In others wo
 
 ## Documentation
 
-Instructions are listed in the official documentation release: https://github.com/riscv/riscv-isa-manual/releases (chapter 23)
+- Instructions are listed in the official documentation release: https://github.com/riscv/riscv-isa-manual/releases (chapter 23)
+- Details for [RV32I](./rv32i.md)
+
