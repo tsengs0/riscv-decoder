@@ -32,4 +32,4 @@ Instructions are first parsed to their opcode, which is not the best option:
 
 - Instructions are listed in the official documentation release: https://github.com/riscv/riscv-isa-manual/releases (chapter 23)
 - Details for [RV32I](./rv32i.md)
-
+- Do [not look at this decoder before I code mine](https://github.com/jck/riscv)
