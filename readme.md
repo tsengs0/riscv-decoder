@@ -21,7 +21,7 @@ Instructions are first parsed to their opcode, which is not the best option:
 "sh":  {"opcode": 0b0100011, "type": "S", "funct3": 0x1},
 ```
 
-`lhu`, `sb` and `sh` share the same opcode while having two different types: this case isn't processed yet. In other words, the decoder works only when the opcode is specific to a type.
+`lhu`, `sb` and `sh` share the same opcode while having two different types: this case isn't processed yet. In other words, the decoder works only when the opcode is specific to a type. However comparing both `opcode` and `funct3` should work.
 
 ## Documentation
 
