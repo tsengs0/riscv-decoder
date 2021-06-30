@@ -96,7 +96,7 @@ def s_decoding(inst):
     opcode = inst & OPCODE_MASK
     return imm11, rs2, rs1, funct3, imm40, opcode
 if __name__ == "__main__":
-    # Instruction to be tested
+    # Instruction to be tested: lui x2, 0xc0000000
     tested_instruction=0xc0000137
     print("Instruction: " + str(hex(tested_instruction)))
     type=instruction_type(tested_instruction & OPCODE_MASK)
