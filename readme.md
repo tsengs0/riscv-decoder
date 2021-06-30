@@ -5,8 +5,23 @@ This idea of this tool is just to decode/parse a given instruction. In others wo
 ## Features
 
 - [ ] RV32I support
-  - [x] U-typed instructions
+  - [x] U type
+  - [ ] R type
+  - [ ] I type
+  - [ ] S type
 - [ ] Support of other instruction extensions
+
+## Known issues
+
+Instructions are first parsed to their opcode, which is not the best option:
+
+```python
+"lhu": {"opcode": 0b0100011, "type": "I", "funct3": 0x5},
+"sb":  {"opcode": 0b0100011, "type": "S", "funct3": 0x0},
+"sh":  {"opcode": 0b0100011, "type": "S", "funct3": 0x1},
+```
+
+`lhu`, `sb` and `sh` share the same opcode while having two different types: this case isn't processed yet. In other words, the decoder works only when the opcode is specific to a type.
 
 ## Documentation
 

@@ -6,12 +6,12 @@ def instruction_type(opcode):
      or (opcode == 0x17)
      or (opcode == 0x6F)):
         inst_type = 'U'
-    elif (opcode == 0x63):
+    elif opcode == 0x63:
         inst_type = 'B'
-    elif (opcode == 0x33):
+    elif opcode == 0x33:
         inst_type = 'R'
     else:
-        inst_type=''
+        raise Exception('Unknown type with opcode = '+str(hex(opcode)))
     return inst_type
 
 
@@ -71,4 +71,4 @@ def instruction_parsing(inst_type,tested_instruction):
         print('[imm11, rs2, rs1, funct3, imm40, opcode]')
         print('[{}]'.format(', '.join(hex(x) for x in [imm11, rs2, rs1, funct3, imm40, opcode])))
     else:
-        print("Not verified yet")
+        raise Exception("Not decoded yet")
