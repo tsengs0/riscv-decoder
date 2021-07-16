@@ -9,6 +9,7 @@ This idea of this tool is just to decode/parse a given instruction. In others wo
   - [ ] R type
   - [ ] I type
   - [ ] S type
+  - [ ] B type
 - [ ] Support of other instruction extensions
 
 ## Known issues
