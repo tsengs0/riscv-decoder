@@ -17,11 +17,11 @@ INSTR = {"lui":  {"opcode": 0b0110111, "type": "U", "funct3": 0xF},
         "lw":    {"opcode": 0b0000011, "type": "I", "funct3": 0x2},
         "lbu":   {"opcode": 0b0000011, "type": "I", "funct3": 0x4},
 
-        "lhu":   {"opcode": 0b0100011, "type": "I", "funct3": 0x5},
+        "lhu":   {"opcode": 0b0000011, "type": "I", "funct3": 0x5},
         "sb":    {"opcode": 0b0100011, "type": "S", "funct3": 0x0},
         "sh":    {"opcode": 0b0100011, "type": "S", "funct3": 0x1},
 
-        "sw":    {"opcode": 0b0010011, "type": "S", "funct3": 0x2},
+        "sw":    {"opcode": 0b0100011, "type": "S", "funct3": 0x2},
         "addi":  {"opcode": 0b0010011, "type": "I", "funct3": 0x0},
         "slti":  {"opcode": 0b0010011, "type": "I", "funct3": 0x2},
         "sltiu": {"opcode": 0b0010011, "type": "I", "funct3": 0x3},

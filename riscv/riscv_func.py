@@ -10,6 +10,10 @@ def instruction_type(opcode):
         inst_type = 'B'
     elif opcode == 0x33:
         inst_type = 'R'
+    elif opcode == 0x23:
+        inst_type = 'S'
+    elif opcode == 0x13:
+        inst_type = 'I'
     else:
         raise Exception('Unknown type with opcode = '+str(hex(opcode)))
     return inst_type
