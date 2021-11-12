@@ -18,7 +18,7 @@ if __name__ == "__main__":
     rf.instruction_parsing(inst_type,
                            tested_instruction)
 
-    # addi x1, x0, 32 - Type KO
+    # addi x1, x0, 32
     print("-----")
     print("addi x1, x0, 32")
     tested_instruction = 0x02000093
@@ -26,7 +26,7 @@ if __name__ == "__main__":
     rf.instruction_parsing(inst_type,
                            tested_instruction)
 
-    # beq x3, x0, +16 - Type OK / decoding KO
+    # beq x3, x0, +16
     print("-----")
     print("beq x3, x0, +16")
     tested_instruction = 0x00018863

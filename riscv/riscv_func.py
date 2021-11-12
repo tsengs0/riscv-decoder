@@ -54,6 +54,18 @@ def s_decoding(inst):
     imm    = concat(imm11,imm40)
     return imm, rs2, rs1, funct3, opcode
 
+def b_decoding(inst):
+    imm12  = inst >> 31
+    imm10  = (inst & rc.B_IMM105_MASK) >> 25
+    rs2    = (inst & rc.RS2_MASK)      >> 20
+    rs1    = (inst & rc.RS1_MASK)      >> 15
+    funct3 = (inst & rc.FUNCT3_MASK)   >> 12
+    imm4   = (inst & rc.B_IMM41_MASK)  >> 8
+    imm11  = (inst & rc.B_IMM7_MASK)   >> 7
+    opcode = inst & rc.OPCODE_MASK
+    imm    = concat(imm12,concat(imm11,concat(imm10,imm4)))*2
+    return imm, rs2, rs1, funct3, opcode
+
 def instruction_parsing(inst_type,tested_instruction):
     print("Instruction: " + str(hex(tested_instruction)))
     print("Type: " + inst_type)
@@ -71,6 +83,10 @@ def instruction_parsing(inst_type,tested_instruction):
         print('[{}]'.format(', '.join(hex(x) for x in [funct7, rs2, rs1, funct3, rd, opcode])))
     elif inst_type == 'S':
         [imm, rs2, rs1, funct3, opcode] = s_decoding(tested_instruction)
+        print('[imm, rs2, rs1, funct3, opcode]')
+        print('[{}]'.format(', '.join(hex(x) for x in [imm, rs2, rs1, funct3, opcode])))
+    elif inst_type == 'B':
+        [imm, rs2, rs1, funct3, opcode] = b_decoding(tested_instruction)
         print('[imm, rs2, rs1, funct3, opcode]')
         print('[{}]'.format(', '.join(hex(x) for x in [imm, rs2, rs1, funct3, opcode])))
     else:
