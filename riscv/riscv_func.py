@@ -1,5 +1,9 @@
 import riscv.riscv_cte as rc
 
+# Concatenate two binary numbers
+def concat(a,b):
+    return int(f"{a}{b}")
+
 def instruction_type(opcode):
     if ((opcode == 0x37)
      or (opcode == 0x17)
@@ -17,13 +21,11 @@ def instruction_type(opcode):
         raise Exception('Unknown type with opcode = '+str(hex(opcode)))
     return inst_type
 
-
 def u_decoding(inst):
     imm    = (inst & rc.U_IMM_MASK) >> 12
     rd     = (inst & rc.RD_MASK)    >> 7
     opcode = inst & rc.OPCODE_MASK
     return imm, rd, opcode
-
 
 def i_decoding(inst):
     imm    = (inst & rc.I_IMM_MASK)  >> 20
@@ -32,7 +34,6 @@ def i_decoding(inst):
     rd     = (inst & rc.RD_MASK)     >> 7
     opcode = inst & rc.OPCODE_MASK
     return imm, rs1, funct3, rd, opcode
-
 
 def r_decoding(inst):
     funct7 = (inst & rc.FUNCT7_MASK) >> 25
@@ -43,7 +44,6 @@ def r_decoding(inst):
     opcode = inst & rc.OPCODE_MASK
     return funct7, rs2, rs1, funct3, rd, opcode
 
-
 def s_decoding(inst):
     imm11  = (inst & rc.S_IMM115_MASK) >> 25
     rs2    = (inst & rc.RS2_MASK)      >> 20
@@ -51,8 +51,8 @@ def s_decoding(inst):
     funct3 = (inst & rc.FUNCT3_MASK)   >> 12
     imm40  = (inst & rc.S_IMM40_MASK)  >> 7
     opcode = inst & rc.OPCODE_MASK
-    return imm11, rs2, rs1, funct3, imm40, opcode
-
+    imm    = concat(imm11,imm40)
+    return imm, rs2, rs1, funct3, opcode
 
 def instruction_parsing(inst_type,tested_instruction):
     print("Instruction: " + str(hex(tested_instruction)))
@@ -70,8 +70,8 @@ def instruction_parsing(inst_type,tested_instruction):
         print('[funct7, rs2, rs1, funct3, rd, opcode]')
         print('[{}]'.format(', '.join(hex(x) for x in [funct7, rs2, rs1, funct3, rd, opcode])))
     elif inst_type == 'S':
-        [imm11, rs2, rs1, funct3, imm40, opcode] = s_decoding(tested_instruction)
-        print('[imm11, rs2, rs1, funct3, imm40, opcode]')
-        print('[{}]'.format(', '.join(hex(x) for x in [imm11, rs2, rs1, funct3, imm40, opcode])))
+        [imm, rs2, rs1, funct3, opcode] = s_decoding(tested_instruction)
+        print('[imm, rs2, rs1, funct3, opcode]')
+        print('[{}]'.format(', '.join(hex(x) for x in [imm, rs2, rs1, funct3, opcode])))
     else:
         raise Exception("Not decoded yet")
