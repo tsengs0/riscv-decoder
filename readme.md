@@ -6,11 +6,11 @@ This idea of this tool is just to decode/parse a given instruction. In others wo
 
 - [ ] RV32I support
   - [x] U type
-  - [ ] R type
-  - [ ] I type
-  - [ ] S type
-  - [ ] B type
-  - [ ] J type
+  - [x] R type
+  - [x] I type
+  - [x] S type
+  - [x] B type
+  - [x] J type
 - [ ] Support of other instruction extensions
 
 ## Known issues
